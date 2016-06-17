@@ -264,8 +264,9 @@ export class Page extends ContentView implements dts.Page {
     public _addChildFromBuilder(name: string, value: any) {
         if (value instanceof ActionBar) {
             this.actionBar = value;
-        }
-        else {
+        } else if (name === "sideDrawer") {
+            this.sideDrawer = value;
+        } else {
             super._addChildFromBuilder(name, value);
         }
     }
