@@ -5,6 +5,7 @@ declare module "ui/page" {
     import observable = require("data/observable");
     import contentView = require("ui/content-view");
     import frame = require("ui/frame");
+    import view = require("ui/core/view");
     import actionBar = require("ui/action-bar");
     import dependencyObservable = require("ui/core/dependency-observable");
     import keyframeAnimation = require("ui/animation/keyframe-animation");
@@ -143,6 +144,11 @@ declare module "ui/page" {
          * Gets the ActionBar for this page.
          */
         actionBar: actionBar.ActionBar;
+
+        /**
+         * Gets or sets the page sideDrawer.
+         */
+        sideDrawer: view.View;
 
         /**
          * A basic method signature to hook an event listener (shortcut alias to the addEventListener method).
