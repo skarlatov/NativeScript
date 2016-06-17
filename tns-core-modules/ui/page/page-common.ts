@@ -31,6 +31,8 @@ var backgroundSpanUnderStatusBarProperty = new Property("backgroundSpanUnderStat
 
 var actionBarHiddenProperty = new Property("actionBarHidden", "Page", new proxy.PropertyMetadata(undefined, AffectsLayout));
 
+var sideDrawerProperty = new Property("sideDrawer", "Page", new proxy.PropertyMetadata(undefined, AffectsLayout));
+
 function onActionBarHiddenPropertyChanged(data: PropertyChangeData) {
     var page = <Page>data.object;
     if (page.isLoaded) {
@@ -43,6 +45,7 @@ function onActionBarHiddenPropertyChanged(data: PropertyChangeData) {
 export class Page extends ContentView implements dts.Page {
     public static backgroundSpanUnderStatusBarProperty = backgroundSpanUnderStatusBarProperty;
     public static actionBarHiddenProperty = actionBarHiddenProperty;
+    public static sideDrawerProperty = sideDrawerProperty;
     public static navigatingToEvent = "navigatingTo";
     public static navigatedToEvent = "navigatedTo";
     public static navigatingFromEvent = "navigatingFrom";
@@ -94,6 +97,14 @@ export class Page extends ContentView implements dts.Page {
 
     set actionBarHidden(value: boolean) {
         this._setValue(Page.actionBarHiddenProperty, value);
+    }
+
+    get sideDrawer(): view.View {
+        return this._getValue(Page.sideDrawerProperty);
+    }
+
+    set sideDrawer(drawer: view.View) {
+        this._setValue(Page.sideDrawerProperty, drawer);
     }
 
     public _updateActionBar(hidden: boolean) {

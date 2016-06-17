@@ -53,6 +53,11 @@ function onFragmentShown(fragment: android.app.Fragment) {
 
     frame._addView(page);
 
+    if(page.sideDrawer) {
+        // Place the side drawer on top of the navigation/action bar.
+        frame._addView(page.sideDrawer);
+    }
+
     // onFragmentShown is called before NativeActivity.start where we call frame.onLoaded
     // We need to call frame.onLoaded() here so that the call to frame._addView(page) will emit the page.loaded event
     // before the page.navigatedTo event making the two platforms identical.
